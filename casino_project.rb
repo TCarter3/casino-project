@@ -8,7 +8,7 @@ require_relative "slots_game.rb"
 # require_relative "rockpaperscissors_class.rb"
 require 'pry'
 require 'colorize'
-# require 'sounds'
+require 'sounder'
 
 class Casino
 
