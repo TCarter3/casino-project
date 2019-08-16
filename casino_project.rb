@@ -2,8 +2,8 @@
 require_relative "Blackjack.rb"
 require_relative "Card.rb"
 require_relative "Deck.rb"
-
-# require_relative "slots_game.rb"
+require_relative "wallet.rb"
+require_relative "slots_game.rb"
 # require_relative "DiceRoll.rb"
 # require_relative "rockpaperscissors_class.rb"
 require 'pry'
