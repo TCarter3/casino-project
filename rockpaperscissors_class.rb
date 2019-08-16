@@ -5,7 +5,9 @@ class RockPaperScissors
   def initialize
     @arr = ["rock", "paper", "scissor"]
 
-   @answer_ 
+   @answer_arr = @arr.clone 
+    puts "welcome to Rock, Paper, Scissors".colorize(:magenta)
+
 
 
 
