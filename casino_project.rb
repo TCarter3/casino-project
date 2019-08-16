@@ -1,4 +1,4 @@
-
+require_relative "BlackJack.rb"
 
 require 'pry'
 require 'colorize'
