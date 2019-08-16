@@ -1,5 +1,11 @@
-require_relative "BlackJack.rb"
 
+require_relative "Blackjack.rb"
+require_relative "Card.rb"
+require_relative "Deck.rb"
+
+# require_relative "slots_game.rb"
+# require_relative "DiceRoll.rb"
+# require_relative "rockpaperscissors_class.rb"
 require 'pry'
 require 'colorize'
 # require 'sounds'
@@ -7,7 +13,7 @@ require 'colorize'
 class Casino
 
     def initialize
-        puts "$$$ CASINO GAMES! $$$"
+        puts "$$$ CASINO GAMES! $$$".colorize(:yellow)
         puts "- Please select a game:"
         puts "1. Rock Paper Scissors"
         puts "2. Dice Roll"
