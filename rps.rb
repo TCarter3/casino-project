@@ -3,7 +3,6 @@ require_relative "User"
 class RPS
 
     def initialize(user)
-        @user = user
         welcome
     end
 
@@ -141,7 +140,7 @@ class RPS
             puts "Invalid amount.".colorize(:red)
             betting
         end
-        if @bet > @user.wallet.current_amount
+        if @bet 
             puts "Sorry, $#{@bet} overkills your wallet at $#{@user.wallet.current_amount}.".colorize(:red)
             betting
         end
@@ -502,12 +501,10 @@ class RPS
 
     def win
         puts "Congratulations, you won $#{@bet}!".colorize(:green)
-        @user.wallet.increase_amount(@bet)
     end
 
     def loss
         puts "Sorry, you lost $#{@bet}!".colorize(:red)
-        @user.wallet.decrease_amount(@bet)
     end
 
     def tie
