@@ -6,7 +6,7 @@ require_relative "User.rb"
 require_relative "Wallet.rb"
 require_relative "slots_game.rb"
 # require_relative "DiceRoll.rb"
-# require_relative "rockpaperscissors_class.rb"
+require_relative "rps.rb"
 require 'pry'
 require 'colorize'
 require 'sounder'
@@ -32,12 +32,7 @@ class Casino
         puts "3. Blackjack"
         puts "4. Slots"
         puts "5. Exit"
-<<<<<<< HEAD
-        puts "6. Add Money"
-        choice = gets.to_i
-=======
         print "> "
->>>>>>> 150952d32e171c5581df618a8d6c9174a4443ee2
 
         case gets.to_i
         when 1
