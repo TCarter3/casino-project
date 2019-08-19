@@ -117,12 +117,12 @@ end
           if poop > 4
             puts ""
           puts "you won!! congratulations! here is 5 Dollars!"
-           # wallet.push(4)
+           wallet.push(4)
           
           elsif 
            
             puts "better luck next time!! 4 dollars down the drain, thats a large oreo mcflurry you could have had!"
-           # wallet.push(4)
+           wallet.push(4)
           end
           
 
@@ -140,11 +140,11 @@ end
         if poop > 5
           puts ""
         puts "you won!! congratulations! here is 10 Dollars!"
-        # wallet.push(5)
+        wallet.push(5)
         elsif 
          
         puts "better luck next time!! Thats a loss of 5 bucks"
-        # wallet.push(5)
+        wallet.push(5)
         end
         
       
@@ -163,12 +163,12 @@ end
       if poop > 15
         puts ""
       puts "you won!! congratulations! here is 100 Dollars!"
-      #wallet.push(100)
+      wallet.push(100)
       elsif
 
     
       puts "ooooo bummer!! You lose 20!"
-      #wallet.push(-20)
+      wallet.push(-20)
       end
       
     end
