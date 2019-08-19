@@ -14,61 +14,69 @@ class Blackjack
       "7": 7,
       "8": 8,
       "9": 9,
-      "J": 11,
-      "Q": 12,
-      "K": 13
+      "J": 10,
+      "Q": 10,
+      "K": 10
     }
+    @winnings = 0
     menu
   end
 
   def menu
     puts "Welcome to the BlackJack table. Aces are low...".colorize(:yellow)
     puts "Buy in is $5 dollars. You in? y/n".colorize(:yellow)
+    print "> "
     gets.strip == "y" ? game : exit
   end
 
   def game
     buy_in
     initial_deal
-    choice
+    play_hand
   end
 
   def buy_in
     # subtract money from wallet here
+    @winnings -= 5
   end
 
   def initial_deal
     @users_hand << @deck.pop
     @dealers_hidden << @deck.pop
     deal
-    display_user
-    puts
-    display_dealer
-    puts
   end
 
   def display_user
     if @users_hand.length <= 0
       puts "There's nothing in the hand..."
     else
+      puts
       @users_hand.each {|card| puts "You have a #{card.rank} of #{card.suit}."}
-      hand_total(@users_hand)
+      @total = hand_total(@users_hand)
+      puts "Your total is #{@total}.".colorize(:cyan)
     end
   end
 
   def display_dealer
-    @dealers_hand.each {|card| puts "Dealer has a #{card.rank} of #{card.suit}."}
-    hand_total(@dealers_hand)
+    if @dealers_hand.length <= 0
+      puts "There's nothing in the hand..."
+    else
+      puts
+      @dealers_hand.each {|card| puts "Dealer has a #{card.rank} of #{card.suit}."}
+      @total = hand_total(@dealers_hand)
+      puts "The dealers total is #{@total}.".colorize(:cyan)
+    end
   end
 
   def add_hidden_card
+    puts "The dealer flips their first card face up..."
     @dealers_hand.push(@dealers_hidden)
   end
 
   def hand_total(array)
     @total = 0
     array.each {|card| @total += @card_values[:"#{card.rank}"]}
-    puts "Total is #{@total}.".colorize(:cyan)
+    return @total
   end
 
   def deal
@@ -76,13 +84,44 @@ class Blackjack
     @dealers_hand << @deck.pop
   end
 
-  def winner_check
-    if @hand_total == 21
-      puts "Blackjack!"
-      puts "Dealer:"
-      hand_total(@dealers_hand)
-    
+  def play_hand
+    display_user
+    puts
+    display_dealer
+    puts
+    @user_total = hand_total(@users_hand)
+    @dealer_total = hand_total(@dealers_hand)
+    if @user_total == 21
+      add_hidden_card
+      if @user_total > @dealer_total
+        @winnings += 10
+        puts "Blackjack! Dealer lost! You won $#{@winnings}!".colorize(:green)
+        # add to wallet here
+      end
+    elsif @dealer_total == 21
+      puts "Dealer won! You lost!".colorize(:red)
+      puts "You didn't when anything...".colorize(:red)
+    elsif @user_total > 21
+      puts "Your total is #{@user_total}, you lost!".colorize(:red)
+      puts "You didn't when anything...".colorize(:red)
+    elsif @dealer_total > 21
+      @winnings = 20
+      puts "Dealer busted! You won $#{@winnings}!".colorize(:green)
+      # add to wallet here
+    else
+      puts "Hit or stay?"
+      @choice = gets.strip.downcase
+      case @choice
+      when "hit"
+        deal
+        play_hand
+      when "stay"
+        @dealers_hand << @deck.pop
+        play_hand
+      else
+        puts "invalid input"
+        play_hand
+      end
     end
   end
-
 end
