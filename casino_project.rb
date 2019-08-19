@@ -20,6 +20,7 @@ class Casino
         puts "3. Blackjack"
         puts "4. Slots"
         puts "5. Exit"
+        puts "6. Add Money"
         choice = gets.to_i
 
         case choice
@@ -33,6 +34,8 @@ class Casino
             Slots.new()
         when 5
             exit
+        when 6
+            Wallet.new()
         else
             puts "Invalid Input".colorize(:red)
             sleep(2)
