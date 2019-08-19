@@ -17,7 +17,7 @@ class Casino
         puts "What is your name?"
         print "> "
         @user = User.new(gets.strip)
-        puts "\nWelcome to the Casino, #{@user.user_name}.}".colorize(:cyan)
+        puts "\nWelcome to the Casino, #{@user.user_name}.".colorize(:cyan)
         puts "You have $#{@user.wallet.amount} in your wallet.".colorize(:cyan)
         puts "Good luck!".colorize(:cyan)
         menu

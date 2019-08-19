@@ -1,5 +1,6 @@
 class Blackjack
-  def initialize
+  def initialize(user)
+    @user = user
     @deck = Deck.new.shuffle_cards
     @users_hand = []
     @dealers_hand = []
@@ -19,11 +20,11 @@ class Blackjack
       "K": 10
     }
     @winnings = 0
+    puts "Welcome #{@user.user_name}, to the BlackJack table. Aces are low...".colorize(:yellow)
     menu
   end
 
   def menu
-    puts "Welcome to the BlackJack table. Aces are low...".colorize(:yellow)
     puts "Buy in is $5 dollars. You in? y/n".colorize(:yellow)
     print "> "
     if gets.strip == "y" 
@@ -41,7 +42,13 @@ class Blackjack
 
   def buy_in
     # subtract money from wallet here
-    @winnings -= 5
+    if @user.wallet.amount >= 5
+      @user.wallet.amount -= 5
+      puts "You have #{@user.wallet.amount} left..."
+    else
+      puts "You do not have enough money to play at the table."
+      puts "Returning to the main menu..."
+    end
   end
 
   def initial_deal
