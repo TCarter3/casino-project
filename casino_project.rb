@@ -5,7 +5,7 @@ require_relative "Deck.rb"
 require_relative "User.rb"
 require_relative "Wallet.rb"
 require_relative "slots_game.rb"
-# require_relative "rps.rb"
+require_relative "rps.rb"
 # require_relative "DiceRoll.rb"
 require 'pry'
 require 'colorize'
