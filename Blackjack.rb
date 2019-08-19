@@ -26,7 +26,11 @@ class Blackjack
     puts "Welcome to the BlackJack table. Aces are low...".colorize(:yellow)
     puts "Buy in is $5 dollars. You in? y/n".colorize(:yellow)
     print "> "
-    gets.strip == "y" ? game : exit
+    if gets.strip == "y" 
+      game
+    else
+      puts "Leaving the blackjack table..."
+    end
   end
 
   def game
