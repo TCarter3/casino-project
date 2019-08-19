@@ -3,10 +3,10 @@ require_relative "Blackjack.rb"
 require_relative "Card.rb"
 require_relative "Deck.rb"
 require_relative "User.rb"
-require_relative "wallet.rb"
+require_relative "Wallet.rb"
 require_relative "slots_game.rb"
+require_relative "rps.rb"
 # require_relative "DiceRoll.rb"
-# require_relative "rockpaperscissors_class.rb"
 require 'pry'
 require 'colorize'
 require 'sounder'
@@ -17,9 +17,8 @@ class Casino
         puts "What is your name?"
         print "> "
         @user = User.new(gets.strip)
-        
         puts "\nWelcome to the Casino, #{@user.user_name}.".colorize(:cyan)
-        puts "You have $#{@wallet.amount} in your wallet.".colorize(:cyan)
+        puts "You have $#{@user.wallet.amount} in your wallet.".colorize(:cyan)
         puts "Good luck!".colorize(:cyan)
         menu
 
@@ -34,22 +33,22 @@ class Casino
         puts "4. Slots"
         puts "5. Exit"
         puts "6. Add Money"
-        choice = gets.to_i
 
         case gets.to_i
         when 1
-            RockPaperScissors.new()
+            RPS.new(@user)
         when 2
             DiceRoll.new()
         when 3
             Blackjack.new(@user)
             menu
         when 4
-            Slots.new()
+            Slots.new(@user)
         when 5
             exit
         when 6
             Wallet.new()
+            
         else
             puts "Invalid Input".colorize(:red)
             sleep(2)
