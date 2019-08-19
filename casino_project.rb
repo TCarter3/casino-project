@@ -36,7 +36,7 @@ class Casino
 
         case gets.to_i
         when 1
-            RockPaperScissors.new()
+            RPS.new(@user)
         when 2
             DiceRoll.new()
         when 3
