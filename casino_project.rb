@@ -32,7 +32,12 @@ class Casino
         puts "3. Blackjack"
         puts "4. Slots"
         puts "5. Exit"
+<<<<<<< HEAD
+        puts "6. Add Money"
+        choice = gets.to_i
+=======
         print "> "
+>>>>>>> 150952d32e171c5581df618a8d6c9174a4443ee2
 
         case gets.to_i
         when 1
@@ -46,6 +51,8 @@ class Casino
             Slots.new()
         when 5
             exit
+        when 6
+            Wallet.new()
         else
             puts "Invalid Input".colorize(:red)
             sleep(2)
