@@ -38,7 +38,7 @@ class Casino
         when 1
             RPS.new(@user)
         when 2
-            DiceRoll.new()
+            Die.new()
         when 3
             Blackjack.new(@user)
             menu
