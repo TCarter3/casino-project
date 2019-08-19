@@ -21,7 +21,7 @@ class Casino
         puts "You have $#{@user.wallet.amount} in your wallet.".colorize(:cyan)
         puts "Good luck!".colorize(:cyan)
         menu
-        
+
     end
 
     def menu
@@ -40,7 +40,7 @@ class Casino
         when 2
             DiceRoll.new()
         when 3
-            Blackjack.new()
+            Blackjack.new(@user)
             menu
         when 4
             Slots.new()
