@@ -47,7 +47,13 @@ class Casino
         when 5
             exit
         when 6
-            Wallet.new()
+            puts "Enter amount you'd like to add:"
+            print "> "
+            @amount = gets.to_i
+            @user.wallet.amount += @amount
+            puts "\nYou've added $#{@amount}.".colorize(:magenta)
+            puts "You now have $#{@user.wallet.amount}. Don't spend it all in one place!".colorize(:magenta)
+            menu
         else
             puts "Invalid Input".colorize(:red)
             sleep(2)
