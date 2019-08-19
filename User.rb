@@ -13,9 +13,9 @@ class User
   attr_accessor :wallet
   attr_reader :user_name
 
-  def initialize(user_name)
-    @user_name = user_name
-    @wallet = Wallet.new()
+  def initialize(username)
+    @user_name = username
+    @wallet = Wallet.new(gets.strip)
 
   end
 end
